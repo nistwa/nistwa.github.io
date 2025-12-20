@@ -1,6 +1,84 @@
-index.html
-style.css
-img1.jpg   (kod ekranı)
-img2.jpg   (CAD/engineering)
-img3.jpg   (deniz)
-logo.png   (yuvarlak logo)
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #000;
+  color: #fff;
+  font-family: "Times New Roman", serif;
+}
+
+.frame {
+  min-height: 100vh;
+  border: 2px solid #7c3aed;
+  padding: 40px 60px;
+  position: relative;
+}
+
+/* LEFT */
+.left {
+  display: flex;
+  gap: 30px;
+}
+
+.image {
+  width: 220px;
+  height: 520px;
+  border-radius: 30px;
+  background-size: cover;
+  background-position: center;
+  transform: skewX(-8deg);
+  transition: 0.4s ease;
+}
+
+.img1 { background-image: url("img1.jpg"); }
+.img2 { background-image: url("img2.jpg"); }
+.img3 { background-image: url("img3.jpg"); }
+
+/* RIGHT */
+.right {
+  position: absolute;
+  top: 90px;
+  right: 120px;
+  text-align: center;
+}
+
+.right h1 {
+  font-size: 80px;
+  letter-spacing: 6px;
+}
+
+.right h2 {
+  font-size: 22px;
+  margin-top: 10px;
+  letter-spacing: 2px;
+}
+
+.right p {
+  font-size: 14px;
+  margin-top: 10px;
+  opacity: 0.8;
+}
+
+.logo {
+  margin-top: 40px;
+}
+
+.logo img {
+  width: 220px;
+  transition: transform 1.5s ease;
+}
+
+/* FOOTER */
+footer {
+  position: absolute;
+  bottom: 25px;
+  left: 60px;
+  right: 60px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  opacity: 0.85;
+}
