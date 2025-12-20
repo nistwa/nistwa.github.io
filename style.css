@@ -1,171 +1,128 @@
-/* === AKANA ROBOTICS | ADVANCED STYLE === */
 :root {
-  --dark-blue: #0b1623;
-  --mid-blue: #1e3550;
-  --accent-blue: #4cc9f0;
-  --light-blue: #9fc3d9;
-  --white: #f5f7fa;
-  --glass: rgba(255,255,255,0.08);
-  --border-glass: rgba(255,255,255,0.18);
+  --bg: #0a0f16;
+  --panel: #111827;
+  --border: #1f2937;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --accent: #38bdf8;
 }
 
 /* RESET */
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Segoe UI", Arial, sans-serif;
+  box-sizing: border-box;
+  font-family: Inter, Segoe UI, Arial, sans-serif;
 }
 
 body {
+  background: var(--bg);
+  color: var(--text);
   min-height: 100vh;
-  background:
-    radial-gradient(circle at 20% 10%, #2f6fa3 0%, transparent 40%),
-    radial-gradient(circle at 80% 90%, #13293d 0%, transparent 45%),
-    linear-gradient(160deg, var(--mid-blue), var(--dark-blue));
-  color: var(--white);
   display: flex;
   flex-direction: column;
 }
 
 /* HEADER */
 header {
+  padding: 48px 20px 32px;
   text-align: center;
-  padding: 60px 20px 40px;
+  border-bottom: 1px solid var(--border);
 }
 
 .logo {
-  width: 150px;
-  margin-bottom: 18px;
-  border-radius: 50%;
-  box-shadow:
-    0 0 25px rgba(79,201,240,0.6),
-    inset 0 0 20px rgba(255,255,255,0.15);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.logo:hover {
-  transform: rotate(-2deg) scale(1.08);
-  box-shadow: 0 0 40px rgba(79,201,240,0.9);
+  width: 120px;
+  margin-bottom: 16px;
 }
 
 header h1 {
-  font-size: 2.4rem;
+  font-size: 2.2rem;
   letter-spacing: 4px;
-  margin-bottom: 6px;
+  font-weight: 700;
 }
 
 header p {
-  font-size: 0.95rem;
-  opacity: 0.85;
+  margin-top: 6px;
+  font-size: 0.9rem;
+  color: var(--muted);
   letter-spacing: 1px;
 }
 
 /* MAIN */
 main {
   flex: 1;
-  max-width: 960px;
-  margin: auto;
-  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 20px;
 }
 
-/* CARD – GLASSMORPHISM */
+/* CARD */
 .card {
-  background: linear-gradient(
-    135deg,
-    rgba(255,255,255,0.12),
-    rgba(255,255,255,0.03)
-  );
-  backdrop-filter: blur(14px);
-  border: 1px solid var(--border-glass);
-  padding: 40px 30px;
-  border-radius: 22px;
-  box-shadow:
-    0 25px 60px rgba(0,0,0,0.55);
+  width: 100%;
+  max-width: 720px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 36px;
   text-align: center;
-  animation: fadeUp 1s ease forwards;
 }
 
 .card h2 {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   margin-bottom: 14px;
-  color: var(--accent-blue);
-  letter-spacing: 1px;
+  color: var(--accent);
 }
 
 .card p {
   font-size: 1rem;
   line-height: 1.6;
-  opacity: 0.9;
+  color: var(--text);
 }
 
-/* BUTTON – CYBER FEEL */
+/* BUTTON */
 button {
-  margin-top: 26px;
-  padding: 15px 40px;
-  border-radius: 40px;
-  border: none;
-  font-size: 1rem;
-  cursor: pointer;
-  background: linear-gradient(135deg, var(--accent-blue), #72efdd);
-  color: #04131f;
-  font-weight: bold;
+  margin-top: 28px;
+  padding: 14px 36px;
+  background: transparent;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
   letter-spacing: 1px;
-  box-shadow:
-    0 10px 25px rgba(79,201,240,0.45);
-  transition: all 0.35s ease;
+  cursor: pointer;
+  transition: 0.25s ease;
 }
 
 button:hover {
-  transform: translateY(-4px) scale(1.08);
-  box-shadow:
-    0 18px 45px rgba(79,201,240,0.85);
+  background: var(--accent);
+  color: #020617;
 }
 
-button:active {
-  transform: scale(0.98);
-}
-
-/* STATUS TEXT */
+/* STATUS */
 #status {
-  margin-top: 18px;
-  font-size: 0.95rem;
-  color: var(--light-blue);
-  letter-spacing: 0.5px;
+  margin-top: 16px;
+  font-size: 0.9rem;
+  color: #7dd3fc;
 }
 
 /* FOOTER */
 footer {
+  padding: 18px;
   text-align: center;
-  padding: 22px;
-  font-size: 0.8rem;
-  opacity: 0.6;
-  letter-spacing: 0.5px;
+  font-size: 0.75rem;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
 }
 
-/* ANIMATION */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* RESPONSIVE */
+/* MOBILE */
 @media (max-width: 600px) {
   header h1 {
-    font-size: 1.9rem;
+    font-size: 1.8rem;
   }
 
   .card {
-    padding: 28px 20px;
-  }
-
-  button {
-    padding: 14px 32px;
+    padding: 26px;
   }
 }
