@@ -12,7 +12,6 @@ body {
 
 .frame {
   min-height: 100vh;
-  border: 2px solid #7c3aed;
   padding: 40px 60px;
   position: relative;
 }
