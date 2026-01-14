@@ -1,3 +1,4 @@
+// ENTRANCE ANIMATION
 const images = document.querySelectorAll(".image");
 
 images.forEach((img, i) => {
@@ -10,6 +11,7 @@ images.forEach((img, i) => {
   }, 300 + i * 200);
 });
 
+// HOVER TILT
 images.forEach(img => {
   img.addEventListener("mousemove", e => {
     const r = img.getBoundingClientRect();
@@ -33,3 +35,12 @@ images.forEach(img => {
     img.style.boxShadow = "none";
   });
 });
+
+// LOGO BREATHING
+const logo = document.querySelector(".logo img");
+let grow = true;
+
+setInterval(() => {
+  logo.style.transform = grow ? "scale(1.06)" : "scale(1)";
+  grow = !grow;
+}, 1600);
