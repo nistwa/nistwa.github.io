@@ -37,13 +37,6 @@ body {
 .img3 { background-image: url("img3.jpg"); }
 
 /* RIGHT */
-.right {
-  position: absolute;
-  top: 90px;
-  right: 120px;
-  text-align: center;
-}
-
 .right h1 {
   font-size: 80px;
   letter-spacing: 6px;
@@ -61,13 +54,10 @@ body {
   opacity: 0.8;
 }
 
-.logo {
-  margin-top: 40px;
-}
-
-.logo img {
-  width: 220px;
-  transition: transform 1.5s ease;
+/* 3D MODEL */
+#auv3d {
+  width: 400px;
+  height: 400px;
 }
 
 /* FOOTER */
@@ -80,14 +70,15 @@ footer {
   opacity: 0.85;
 }
 
-/* RESPONSIVE BOOST */
+/* RESPONSIVE */
 @media (max-width: 992px) {
-  .right {
-    position: static;
-    margin-top: 60px;
-  }
-
   .left {
     justify-content: center;
+    margin-bottom: 40px;
+  }
+
+  footer {
+    position: static;
+    margin-top: 40px;
   }
 }
