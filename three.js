@@ -1,80 +1,88 @@
-const container = document.getElementById("auv3d");
-
-// SAHNE
-const scene = new THREE.Scene();
-
-// KAMERA
-const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 5000);
-
-// RENDER
-const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-renderer.setSize(400, 400);
-renderer.setPixelRatio(window.devicePixelRatio);
-container.appendChild(renderer.domElement);
-
-// IŞIKLAR
-scene.add(new THREE.AmbientLight(0xffffff, 1));
-
-const dirLight = new THREE.DirectionalLight(0xffffff, 1.5);
-dirLight.position.set(10, 10, 10);
-scene.add(dirLight);
-
-// KONTROL
-const controls = new THREE.OrbitControls(camera, renderer.domElement);
-controls.enableDamping = true;
-controls.enablePan = false;
-
-// MODEL
-let model;
-
-const loader = new THREE.OBJLoader();
-loader.load(
-  "model.obj",
-  obj => {
-    // MATERYAL ATA
-    obj.traverse(child => {
-      if (child.isMesh) {
-        child.material = new THREE.MeshStandardMaterial({
-          color: 0x7c3aed,
-          metalness: 0.5,
-          roughness: 0.4
-        });
-      }
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // --- Sticky Header & Navbar Background ---
+    const header = document.getElementById('header');
+    
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
     });
 
-    // BOUNDING BOX
-    const box = new THREE.Box3().setFromObject(obj);
-    const size = box.getSize(new THREE.Vector3()).length();
-    const center = box.getCenter(new THREE.Vector3());
+    // --- Mobile Navigation Toggle ---
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    const navLinksItems = document.querySelectorAll('.nav-link');
 
-    // ORTALA
-    obj.position.sub(center);
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        const icon = hamburger.querySelector('i');
+        if (navLinks.classList.contains('active')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+        } else {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
+    });
 
-    // ÖLÇEKLE
-    const scale = 2 / size;
-    obj.scale.setScalar(scale);
+    // Close mobile menu when a link is clicked
+    navLinksItems.forEach(item => {
+        item.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            const icon = hamburger.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        });
+    });
 
-    // KAMERA AYARI
-    camera.position.set(0, 0, 4);
-    camera.lookAt(0, 0, 0);
+    // --- Active Link Highlighting on Scroll ---
+    const sections = document.querySelectorAll('section');
+    
+    window.addEventListener('scroll', () => {
+        let current = '';
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            
+            if (scrollY >= (sectionTop - sectionHeight / 3)) {
+                current = section.getAttribute('id');
+            }
+        });
+        
+        navLinksItems.forEach(li => {
+            li.classList.remove('active');
+            if (li.getAttribute('href').includes(current)) {
+                li.classList.add('active');
+            }
+        });
+    });
 
-    model = obj;
-    scene.add(model);
-  },
-  undefined,
-  error => {
-    console.error("OBJ yüklenemedi:", error);
-  }
-);
+    // --- Scroll Reveal Animations (Intersection Observer) ---
+    const revealElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
+    
+    const revealOptions = {
+        threshold: 0.15,
+        rootMargin: "0px 0px -50px 0px"
+    };
+    
+    const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) {
+                return;
+            } else {
+                entry.target.classList.add('active');
+                // Optional: Stop observing once revealed
+                // observer.unobserve(entry.target);
+            }
+        });
+    }, revealOptions);
+    
+    revealElements.forEach(el => {
+        revealOnScroll.observe(el);
+    });
 
-// LOOP
-function animate() {
-  requestAnimationFrame(animate);
-
-  if (model) model.rotation.y += 0.004;
-
-  controls.update();
-  renderer.render(scene, camera);
-}
-
-animate();
+});
