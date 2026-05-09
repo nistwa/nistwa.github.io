@@ -1,46 +1,88 @@
-// ENTRANCE ANIMATION
-const images = document.querySelectorAll(".image");
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // --- Sticky Header & Navbar Background ---
+    const header = document.getElementById('header');
+    
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
 
-images.forEach((img, i) => {
-  img.style.opacity = "0";
-  img.style.transform = "skewX(-8deg) translateY(40px)";
-  setTimeout(() => {
-    img.style.transition = "0.8s ease";
-    img.style.opacity = "1";
-    img.style.transform = "skewX(-8deg) translateY(0)";
-  }, 300 + i * 200);
+    // --- Mobile Navigation Toggle ---
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    const navLinksItems = document.querySelectorAll('.nav-link');
+
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        const icon = hamburger.querySelector('i');
+        if (navLinks.classList.contains('active')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+        } else {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
+    });
+
+    // Close mobile menu when a link is clicked
+    navLinksItems.forEach(item => {
+        item.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            const icon = hamburger.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        });
+    });
+
+    // --- Active Link Highlighting on Scroll ---
+    const sections = document.querySelectorAll('section');
+    
+    window.addEventListener('scroll', () => {
+        let current = '';
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            
+            if (scrollY >= (sectionTop - sectionHeight / 3)) {
+                current = section.getAttribute('id');
+            }
+        });
+        
+        navLinksItems.forEach(li => {
+            li.classList.remove('active');
+            if (li.getAttribute('href').includes(current)) {
+                li.classList.add('active');
+            }
+        });
+    });
+
+    // --- Scroll Reveal Animations (Intersection Observer) ---
+    const revealElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
+    
+    const revealOptions = {
+        threshold: 0.15,
+        rootMargin: "0px 0px -50px 0px"
+    };
+    
+    const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) {
+                return;
+            } else {
+                entry.target.classList.add('active');
+                // Optional: Stop observing once revealed
+                // observer.unobserve(entry.target);
+            }
+        });
+    }, revealOptions);
+    
+    revealElements.forEach(el => {
+        revealOnScroll.observe(el);
+    });
+
 });
-
-// HOVER TILT
-images.forEach(img => {
-  img.addEventListener("mousemove", e => {
-    const r = img.getBoundingClientRect();
-    const x = e.clientX - r.left;
-    const y = e.clientY - r.top;
-
-    const rx = (y / r.height - 0.5) * 8;
-    const ry = (x / r.width - 0.5) * -8;
-
-    img.style.transform = `
-      skewX(-8deg)
-      rotateX(${rx}deg)
-      rotateY(${ry}deg)
-      scale(1.03)
-    `;
-    img.style.boxShadow = "0 0 30px rgba(124,58,237,0.6)";
-  });
-
-  img.addEventListener("mouseleave", () => {
-    img.style.transform = "skewX(-8deg)";
-    img.style.boxShadow = "none";
-  });
-});
-
-// LOGO BREATHING
-const logo = document.querySelector(".logo img");
-let grow = true;
-
-setInterval(() => {
-  logo.style.transform = grow ? "scale(1.06)" : "scale(1)";
-  grow = !grow;
-}, 1600);
