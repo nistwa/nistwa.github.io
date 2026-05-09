@@ -1,0 +1,52 @@
+Sana flipcard lar için bilgileri veriyorum
+Nisa Özpehlivan
+TAKIM KAPTANI
+Otonom görev kodlarının tasarımından, tüm alt sistemlerin teknik entegrasyonundan ve 12 kişilik ekibin koordinasyonundan sorumludur.
+
+Ahmet Doğru
+YAZILIM TAKIM KAPTANI
+Ana algoritma ve akış diyagramlarının tasarımı ile sistem entegrasyonu süreçleri üzerinde çalışmaktadır.
+
+İbrahim Kasım Kadıoğlu
+YAZILIM TAKIM ÜYESİ
+Otonom hareket yazılım tasarımcısı olarak aracımızın görev yönetimi ve sensör iletişimleri üzerine çalışıyorum.
+
+Berat Ediş
+YAZILIM TAKIM ÜYESİ
+Ana araç - Mini ROV haberleşme altyapısının kurulması, veri aktarım protokollerinin geliştirilmesi ve yer istasyonu kullanıcı arayüzünün (GUI) tasarlanması üzerine çalışmaktadır.
+
+Selva Aksu
+YAZILIM TAKIM ÜYESİ
+Su altı görüntü işleme algoritmaları, derin öğrenme ve nesne tespiti üzerine çalışmaktadır.
+
+Abdullah Furkan Tural
+ELEKTRONİK TAKIM KAPTANI
+Akana takımı Elektronik Kaptanı olarak; Otonom su altı araçlarımız için devre tasarımı, güç elektroniği ve gömülü sistem mimarileri üzerine çalışıyorum.
+
+Ali Sekmen
+ELEKTRONİK TAKIM ÜYESİ
+Elektronik bölümündeyim PCBnin fiziksel birleşimi şablon detaylandırması gibi işleri yapiyorum
+
+Kürşat Kavukluoğlu
+ELEKTRONİK TAKIM ÜYESİ
+Elektrik bölümünde şema çizimi ve rapor hazırlama üzerine çalışıyorum.
+
+Abdullah Enes Gülerli
+ELEKTRONİK TAKIM ÜYESİ
+Elektronik bölümdeyim elektronik şemanının birleştirilmesi ve komponentlerin testleri üzerinde uğraşıyorum
+
+Mert Emir Gültekin
+MEKANİK TAKIM KAPTANI
+Su altı sızdırmazlık sistemleri (O-ring, flanş) ve donanım yerleşimi üzerine çalışmaktadır.
+
+Ömer Faruk Güler
+MEKANİK TAKIM ÜYESİ
+Robotun iç/dış 3D gövde tasarımı (CAD) ve malzeme seçimi üzerine çalışmaktadır.
+
+Merve Gökalp
+MEKANİK TAKIM ÜYESİ
+3 boyutlu sanal modelleme ve basılacak parçaların tasarım optimizasyonları üzerine çalışmaktadır.
+
+Mustafa Zurnacı
+MEKANİK TAKIM ÜYESİ
+Su altı sızdırmazlık güvencesinin sağlanması, 3D yazıcı ile yapısal parça imalatı ve takımın  web sitesinin tasarlanıp yönetilmesinden sorumludur
