@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // --- Sticky Header & Navbar Background ---
     const header = document.getElementById('header');
-    
+
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
             header.classList.add('scrolled');
@@ -40,19 +40,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Active Link Highlighting on Scroll ---
     const sections = document.querySelectorAll('section');
-    
+
     window.addEventListener('scroll', () => {
         let current = '';
-        
+
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.clientHeight;
-            
+
             if (scrollY >= (sectionTop - sectionHeight / 3)) {
                 current = section.getAttribute('id');
             }
         });
-        
+
         navLinksItems.forEach(li => {
             li.classList.remove('active');
             if (li.getAttribute('href').includes(current)) {
@@ -63,13 +63,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Scroll Reveal Animations (Intersection Observer) ---
     const revealElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
-    
+
     const revealOptions = {
         threshold: 0.15,
         rootMargin: "0px 0px -50px 0px"
     };
-    
-    const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+
+    const revealOnScroll = new IntersectionObserver(function (entries, observer) {
         entries.forEach(entry => {
             if (!entry.isIntersecting) {
                 return;
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, revealOptions);
-    
+
     revealElements.forEach(el => {
         revealOnScroll.observe(el);
     });
