@@ -85,4 +85,20 @@ document.addEventListener('DOMContentLoaded', () => {
         revealOnScroll.observe(el);
     });
 
+    // --- Copy Email to Clipboard ---
+    const copyEmailBtn = document.querySelector('.copy-email');
+    if (copyEmailBtn) {
+        copyEmailBtn.addEventListener('click', () => {
+            const emailToCopy = copyEmailBtn.getAttribute('data-email');
+            navigator.clipboard.writeText(emailToCopy).then(() => {
+                copyEmailBtn.classList.add('copied');
+                setTimeout(() => {
+                    copyEmailBtn.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Kopyalama işlemi başarısız: ', err);
+            });
+        });
+    }
+
 });
