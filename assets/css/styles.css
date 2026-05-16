@@ -743,6 +743,48 @@ ul {
     transform: translate(0);
 }
 
+/* --- Tooltip (Kopyalama için) --- */
+.copy-email {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+}
+
+.copy-tooltip {
+    visibility: hidden;
+    width: 100px;
+    background-color: var(--accent-primary);
+    color: var(--bg-darker);
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -50px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.copy-tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--accent-primary) transparent transparent transparent;
+}
+
+.copy-email.copied .copy-tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
 /* --- Responsive Design --- */
 @media (max-width: 992px) {
     .hero-content {
